@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ford.fims.issueManagement.service.JiraService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/jira")
-//@Api("JIRA Controller for FIMS")
+@Api("JIRA Controller for FIMS")
 public class JiraController {
 	
 	  @Autowired
@@ -33,7 +34,7 @@ public class JiraController {
 
 	    @PostMapping(value = "/create-ticket", consumes = {MediaType.ALL_VALUE})
 	    @ApiOperation(value = "To Create ticket in JIRA", notes = "To load data to JIRA")
-	    public ResponseEntity<String> triggerCupidStageBatch() {
+	    public ResponseEntity<String> createTicket() {
 
 	        try {
 	        	String result = jiraService.createIssue(projectKey, issueType, issueSummary);
